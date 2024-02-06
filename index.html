@@ -3,32 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/style.css" />
     <title>Weather</title>
   </head>
   <body>
-    <header>
-      <form>
-        <input type="search" placeholder="Enter a city..." required />
-        <input type="submit" value="Search" />
-      </form>
-      <hr />
-    </header>
-    <main>
-      <h1>City</h1>
-      <div>18°C</div>
-      <p>
-        Feels like 15°C <br />
-        Humidity: <br />
-        Wind speed: <br />
-        Saturday 15:03, Partly cloudy
-      </p>
-      <div>🌥️</div>
-      <hr />
-    </main>
-    <footer>
-      Coded by <a href="#" target="_blank">Milena Drozdowska</a> and is
-      <a href="#" target="_blank"> on GitHub</a> and
-      <a href="#" target="_blank">hosted on Netlify</a>
-    </footer>
+    <div id="project-container">
+      <header>
+        <form id="search-city">
+          <input type="search" placeholder="Enter a city..." required />
+          <input type="submit" value="Search" />
+        </form>
+        <hr />
+      </header>
+      <main>
+        <h1>City</h1>
+        <div id="current-weather">
+          <div id="current-temp">
+            <span id="temp-value">18</span>
+            <span id="current-temp-info">
+              <span id="temp-unit">°C</span>
+              <span id="temp-high">19</span>
+              <span id="temp-low">15</span>
+            </span>
+          </div>
+          <div id="current-weather-icon">🌥️</div>
+        </div>
+        <p id="current-weather-details">
+          Saturday 15:03, Partly cloudy <br />
+          Humidity: <strong>54%</strong> <br />
+          Wind speed: <strong>12km/h</strong> <br />
+        </p>
+        <hr />
+      </main>
+      <footer>
+        Coded by <a href="#" target="_blank">Milena Drozdowska</a> available
+        <a href="#" target="_blank"> on GitHub</a> and
+        <a href="#" target="_blank">hosted on Netlify</a>
+      </footer>
+    </div>
   </body>
 </html>
