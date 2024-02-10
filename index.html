@@ -9,6 +9,7 @@
       href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>Weather</title>
   </head>
@@ -16,13 +17,18 @@
     <div id="project-container">
       <header>
         <form id="search-city">
-          <input type="search" placeholder="Enter a city..." required />
+          <input
+            type="search"
+            placeholder="Enter a city..."
+            required
+            id="search-city-input"
+          />
           <input type="submit" value="Search" />
         </form>
         <hr />
       </header>
       <main>
-        <h1>City</h1>
+        <h1 id="current-city">City</h1>
         <div id="current-weather">
           <div id="current-temp">
             <span id="temp-value">18</span>
@@ -47,5 +53,6 @@
         <a href="#" target="_blank">hosted on Netlify</a>
       </footer>
     </div>
+    <script src="src/index.js"></script>
   </body>
 </html>
