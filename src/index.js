@@ -8,6 +8,7 @@ function updateInterface(response) {
   let description = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
+  let icon = document.querySelector("#current-weather-icon");
 
   currentCity.innerHTML = response.data.name;
 
@@ -27,6 +28,8 @@ function updateInterface(response) {
   humidity.innerHTML = `${response.data.main.humidity}%`;
 
   wind.innerHTML = `${response.data.wind.speed}km/h`;
+
+  icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" alt="" />`;
 }
 
 function formatDate(response) {
