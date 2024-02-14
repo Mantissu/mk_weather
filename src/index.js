@@ -1,7 +1,57 @@
 function updateInterface(response) {
   console.log(response.data);
   let currentCity = document.querySelector("#current-city");
+  let currentTemp = document.querySelector("#temp-value");
+  let tempHigh = document.querySelector("#temp-high");
+  let tempLow = document.querySelector("#temp-low");
+  let dateAndTime = document.querySelector("#date-and-time");
+  let description = document.querySelector("#description");
+  let humidity = document.querySelector("#humidity");
+  let wind = document.querySelector("#wind");
+
   currentCity.innerHTML = response.data.name;
+
+  temp = Math.round(response.data.main.temp);
+  currentTemp.innerHTML = temp;
+
+  tempMax = Math.round(response.data.main.temp_max);
+  tempHigh.innerHTML = tempMax;
+
+  tempMin = Math.round(response.data.main.temp_min);
+  tempLow.innerHTML = tempMin;
+
+  dateAndTime.innerHTML = formatDate(response.data.timezone * 1000);
+
+  description.innerHTML = response.data.weather[0].description;
+
+  humidity.innerHTML = `${response.data.main.humidity}%`;
+
+  wind.innerHTML = `${response.data.wind.speed}km/h`;
+}
+
+function formatDate(response) {
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let currentTimeUTC = new Date();
+  let currentTime = new Date(currentTimeUTC.getTime() + response);
+
+  let hour = currentTime.getHours();
+  let minutes = currentTime.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let day = days[currentTime.getDay()];
+
+  return `${day} ${hour}:${minutes}`;
 }
 
 function searchCity(city) {
@@ -18,3 +68,5 @@ function submitSearch(event) {
 
 let searchForm = document.querySelector("#search-city");
 searchForm.addEventListener("submit", submitSearch);
+
+searchCity("London");
