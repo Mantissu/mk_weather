@@ -1,4 +1,4 @@
-function updateInterface(response) {
+function updateWeather(response) {
   console.log(response.data);
   let currentCity = document.querySelector("#current-city");
   let currentTemp = document.querySelector("#temp-value");
@@ -30,6 +30,8 @@ function updateInterface(response) {
   wind.innerHTML = `${response.data.wind.speed}km/h`;
 
   icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" alt="" />`;
+
+  getForecast(response.data.name);
 }
 
 function formatDate(response) {
@@ -60,7 +62,7 @@ function formatDate(response) {
 function searchCity(city) {
   let apiKey = "8c5739a97b9293b1ed586257ba7ae85b";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(updateInterface);
+  axios.get(apiUrl).then(updateWeather);
 }
 
 function submitSearch(event) {
@@ -69,6 +71,46 @@ function submitSearch(event) {
   searchCity(city);
 }
 
+function updateForecast(response) {
+  let forecast = "";
+
+  console.log(response.data);
+  response.data.list.forEach(function (day, index) {
+    if (
+      index == 7 ||
+      index == 15 ||
+      index == 23 ||
+      index == 31 ||
+      index == 39
+    ) {
+      let date = day.dt_txt;
+      date = date.slice(5, 10);
+      date = date.replace("-", "/");
+      forecast =
+        forecast +
+        `<div id="forecast-day">
+        <div id="forecast-date">${date}</div>
+        <div id="forecast-icon"><img src="https://openweathermap.org/img/wn/${
+          day.weather[0].icon
+        }@2x.png" alt="" width = 40px/></div>
+        <div id="forecast-temp">
+        <div id="forecast-temp-high">${Math.ceil(day.main.temp_max)}°</div>
+        <div id="forecast-temp-low">${Math.floor(day.main.temp_min)}°</div>
+        </div>
+        </div>`;
+    }
+  });
+
+  let forecastElement = document.querySelector("#weather-forecast");
+  forecastElement.innerHTML = forecast;
+}
+
+function getForecast(city) {
+  let apiKey = "8c5739a97b9293b1ed586257ba7ae85b";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(updateForecast);
+}
 let searchForm = document.querySelector("#search-city");
 searchForm.addEventListener("submit", submitSearch);
 

@@ -29,7 +29,7 @@ footer {
   margin: 30px auto;
   padding: 20px 10px;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 5px 5px 10px rgba(39, 33, 66, 0.4);
 }
 
@@ -51,7 +51,8 @@ footer {
 #search-city input[type="search"] {
   color: rgba(39, 33, 66, 0.4);
   flex-grow: 1;
-  background-color: #f9f7fe;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: solid #45a183;
 }
 
 #search-city input[type="submit"] {
@@ -92,7 +93,7 @@ footer {
 
 #temp-high {
   color: #e92023;
-  font-weight: bold;
+  font-weight: 900;
 }
 
 #temp-low {
@@ -102,6 +103,8 @@ footer {
 #current-weather-icon {
   width: 100px;
   height: 95px;
+  position: relative;
+  top: -13px;
 }
 
 #current-weather-details {
@@ -110,4 +113,41 @@ footer {
 
 #current-weather-details strong {
   color: #3d8d72;
+}
+
+#weather-forecast {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px auto;
+}
+
+#forecast-day {
+  display: flex;
+  flex-direction: column;
+  transition: all 150ms ease-in-out;
+}
+
+#forecast-day:hover {
+  padding: 0 10px;
+  border-radius: 5px;
+  box-shadow: 7px 7px 15px rgba(95, 95, 95, 0.2);
+}
+
+#forecast-date {
+  font-size: 15px;
+  color: rgba(39, 33, 66, 0.6);
+}
+
+#forecast-temp {
+  display: flex;
+  justify-content: space-between;
+}
+
+#forecast-temp-high {
+  color: #e92023;
+  font-weight: 900;
+}
+
+#forecast-temp-low {
+  color: #1a64d6;
 }
