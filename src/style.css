@@ -20,6 +20,14 @@ h1 {
   color: #3d8d72;
 }
 
+h2 {
+  font-size: 35px;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  color: #3d8d72;
+  margin-bottom: 40px;
+}
+
 footer {
   color: rgba(39, 33, 66, 0.6);
 }
@@ -70,6 +78,7 @@ footer {
 #current-weather {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   margin: 25px 0;
 }
 
@@ -109,6 +118,7 @@ footer {
 
 #current-weather-details {
   color: rgba(39, 33, 66, 0.6);
+  text-align: justify;
 }
 
 #current-weather-details strong {
