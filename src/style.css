@@ -128,12 +128,14 @@ footer {
 #weather-forecast {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   margin: 30px auto;
 }
 
 #forecast-day {
   display: flex;
   flex-direction: column;
+  margin: 15px 10px;
   transition: all 150ms ease-in-out;
 }
 
@@ -160,4 +162,29 @@ footer {
 
 #forecast-temp-low {
   color: #1a64d6;
+}
+
+@media (min-width: 900px) {
+  hr {
+    margin-bottom: 30px;
+  }
+
+  h1,
+  h2 {
+    line-height: 2em;
+  }
+
+  #current-weather-details {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 35px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
 }
